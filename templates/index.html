@@ -1,0 +1,12 @@
+<!-- Extending the base.html -->
+{% extends 'base.html' %}
+
+<!-- Adding title -->
+{% block title %} To-Do App {% endblock %}
+
+<!-- Adding heading -->
+{% include 'heading.html' %}
+
+{% block content %}
+<h1> Hello </h1>
+{% endblock %}
