@@ -9,28 +9,45 @@
 
 <!-- The main content -->
 {% block content %}
-<div class="container-fluid mt-5">
+<div class="container mt-5">
     <h2>Task List</h2>
     <table class="table table-bordered table-responsive">
         <thead>
             <tr>
-                <th colspan="2">Tasks</th>
-                <th>Status</th>
+                <th style="width: 60%;">Tasks</th>
+                <th style="width: 100px;">Status</th> 
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+            {% for todo in todo_list %}
             <tr>
-                <td>Task 1</td>
-                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, enim.
+                <td style="width: 60%;">{{todo.task_name}}</td>
+                <td style="width: 100px;">
+                    {% if todo.task_status == False %}
+                    <p class="text-danger">In Progress</p>
+                    {% else %}
+                        <p class="text-success">Done</p>
+                    {% endif %}
                 </td>
-                <td>In Progress</td>
                 <td>
-                    <button class="btn btn-primary btn-sm">Edit</button>
-                    <button class="btn btn-danger btn-sm">Delete</button>
+                    {% if todo.task_status == False %}
+                        <a href="/update/{{todo.task_id}}"><button class="btn btn-primary btn-sm btn-block btn-fixed-size">Mark as Done</button></a>
+                    {% else %}
+                        <a href="/update/{{todo.task_id}}"><button class="btn btn-primary btn-sm btn-block btn-fixed-size">Mark as Pending</button></a>
+                    {% endif %}
+                    <a href="/delete/{{todo.task_id}}"><button class="btn btn-danger btn-sm btn-block">Delete</button></a>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
+
+<style>
+.btn-fixed-size {
+    width: 140px; /* Adjust width as needed */
+    padding: 5px 10px; /* Adjust padding as needed */
+}
+</style>
 {% endblock %}
