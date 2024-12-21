@@ -7,6 +7,30 @@
 <!-- Adding heading -->
 {% include 'heading.html' %}
 
+<!-- The main content -->
 {% block content %}
-<h1> Hello </h1>
+<div class="container-fluid mt-5">
+    <h2>Task List</h2>
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <th colspan="2">Tasks</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Task 1</td>
+                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, enim.
+                </td>
+                <td>In Progress</td>
+                <td>
+                    <button class="btn btn-primary btn-sm">Edit</button>
+                    <button class="btn btn-danger btn-sm">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 {% endblock %}
